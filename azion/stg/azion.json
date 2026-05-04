@@ -1,0 +1,237 @@
+{
+  "name": "azion-console-kit-stg",
+  "bucket": "console-kit-stg",
+  "preset": "vue",
+  "env": "production",
+  "prefix": "20260504155236",
+  "rotate-prefix": false,
+  "not-first-run": true,
+  "function": {
+    "id": 52429,
+    "name": "__DEFAULT__",
+    "file": ".edge/worker.js",
+    "args": "azion/stg/args.json",
+    "instance-id": 46902,
+    "instance-name": "__DEFAULT__",
+    "cache-id": 0
+  },
+  "application": {
+    "id": 1777926189,
+    "name": "__DEFAULT__"
+  },
+  "domain": {
+    "id": 1777922111,
+    "name": "azion-console-kit-stg",
+    "domain_name": "r748i20iw8.map.azionedge.net",
+    "url": "https://r748i20iw8.map.azionedge.net"
+  },
+  "rt-purge": {
+    "purge_on_publish": true
+  },
+  "origin": [
+    {
+      "origin-id": 259346,
+      "origin-key": "1efe6a7c-2610-40ca-b538-1284a14cf476",
+      "name": "origin-storage-default"
+    },
+    {
+      "origin-id": 259347,
+      "origin-key": "3bd71409-fd6b-4a62-91c7-726e0818419c",
+      "name": "origin-billing"
+    },
+    {
+      "origin-id": 259348,
+      "origin-key": "e67f4c0c-6929-4e7b-b312-ed96b90b08d6",
+      "name": "origin-script-runner"
+    },
+    {
+      "origin-id": 259349,
+      "origin-key": "50bd6a20-0936-4cc1-b32d-7d4e77e86cb4",
+      "name": "origin-template-engine"
+    },
+    {
+      "origin-id": 259350,
+      "origin-key": "d7f09855-c6e6-4362-95be-a84e3baec02d",
+      "name": "origin-iam-api"
+    },
+    {
+      "origin-id": 259351,
+      "origin-key": "ad636640-4190-4db3-950a-0ec3883ce6a4",
+      "name": "origin-marketplace"
+    },
+    {
+      "origin-id": 259352,
+      "origin-key": "5b37f002-ece8-4c3e-a26c-39d422b7751a",
+      "name": "origin-cities"
+    },
+    {
+      "origin-id": 259353,
+      "origin-key": "6a8fea08-bbd2-44b4-9851-23e92ca2f310",
+      "name": "origin-sso"
+    },
+    {
+      "origin-id": 259354,
+      "origin-key": "59018bea-e13b-45d1-b9d2-fed2c66c7234",
+      "name": "origin-api"
+    },
+    {
+      "origin-id": 259355,
+      "origin-key": "fa743a01-5718-4b77-aa96-ca9f8e46b79c",
+      "name": "origin-console-feedback"
+    },
+    {
+      "origin-id": 259356,
+      "origin-key": "4a748ccb-2ec6-49b6-84ff-a6056497fbdb",
+      "name": "origin-help-center"
+    }
+  ],
+  "rules-engine": {
+    "created": false,
+    "rules": [
+      {
+        "id": 548528,
+        "name": "Apply Common Configuration for All Requests",
+        "phase": "request"
+      },
+      {
+        "id": 548529,
+        "name": "Set Origin for Help Center",
+        "phase": "request"
+      },
+      {
+        "id": 548530,
+        "name": "Set Cache for Static Assets",
+        "phase": "request"
+      },
+      {
+        "id": 548531,
+        "name": "Set Storage Origin for All Requests",
+        "phase": "request"
+      },
+      {
+        "id": 548532,
+        "name": "Deliver Static Assets from Storage",
+        "phase": "request"
+      },
+      {
+        "id": 548533,
+        "name": "Redirect All Non-Asset Requests to to index.html",
+        "phase": "request"
+      },
+      {
+        "id": 548534,
+        "name": "Route API Default Requests to API Origin",
+        "phase": "request"
+      },
+      {
+        "id": 548535,
+        "name": "Route Specific API Services to Marketplace Origin",
+        "phase": "request"
+      },
+      {
+        "id": 548536,
+        "name": "Route Specific API Services to Template Engine Origin",
+        "phase": "request"
+      },
+      {
+        "id": 548537,
+        "name": "Route Specific API Services to Script Runner Origin",
+        "phase": "request"
+      },
+      {
+        "id": 548538,
+        "name": "Route User Authentication and Account Management to SSO Origin",
+        "phase": "request"
+      },
+      {
+        "id": 548539,
+        "name": "Route GraphQL City Queries to Cities Origin",
+        "phase": "request"
+      },
+      {
+        "id": 548540,
+        "name": "Billing PDF",
+        "phase": "request"
+      },
+      {
+        "id": 548541,
+        "name": "API Version 4 Routing",
+        "phase": "request"
+      },
+      {
+        "id": 548542,
+        "name": "Route Send Feedback",
+        "phase": "request"
+      },
+      {
+        "id": 548543,
+        "name": "Route API Identity Providers",
+        "phase": "request"
+      },
+      {
+        "id": 548544,
+        "name": "Rewrite azrt Cookie in azion.com",
+        "phase": "response"
+      },
+      {
+        "id": 548545,
+        "name": "Rewrite azrt Cookie in azionedge.net",
+        "phase": "response"
+      },
+      {
+        "id": 548546,
+        "name": "Rewrite azsid Cookie in azion.com",
+        "phase": "response"
+      },
+      {
+        "id": 548547,
+        "name": "Rewrite azsid Cookie in azionedge.net",
+        "phase": "response"
+      },
+      {
+        "id": 548548,
+        "name": "Rewrite azat Cookie in azion.com",
+        "phase": "response"
+      },
+      {
+        "id": 548549,
+        "name": "Rewrite azat Cookie in azionedge.net",
+        "phase": "response"
+      },
+      {
+        "id": 548550,
+        "name": "OAuth Security Headers - Login and Signup",
+        "phase": "response"
+      },
+      {
+        "id": 548551,
+        "name": "OAuth Security Headers - GitHub Connection",
+        "phase": "response"
+      },
+      {
+        "id": 548552,
+        "name": "Secure Headers - General",
+        "phase": "response"
+      },
+      {
+        "id": 548553,
+        "name": "Cache Controll to index.html",
+        "phase": "response"
+      }
+    ]
+  },
+  "cache-settings": [
+    {
+      "id": 280212,
+      "name": "Statics - Cache .html"
+    },
+    {
+      "id": 280213,
+      "name": "Statics - Cache"
+    },
+    {
+      "id": 280214,
+      "name": "Cities - Cache"
+    }
+  ]
+}
