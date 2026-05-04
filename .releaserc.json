@@ -1,6 +1,8 @@
 {
   "branches": [
-    "main",
+    {
+      "name": "main"
+    },
     {
       "name": "next",
       "channel": "next",
@@ -64,7 +66,7 @@
         "draftRelease": false,
         "releaseNameTemplate": "v${nextRelease.version}",
         "successComment": false,
-        "failComment": false
+        "failCommentCondition": false
       }
     ]
   ]
