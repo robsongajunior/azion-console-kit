@@ -13,8 +13,6 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    container:
-      image: node:22-alpine
 
     steps:
       - name: Checkout code
@@ -23,8 +21,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install SO deps
-        run: apk add git
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
