@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.2](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.1...1.55.0-rc.2) (2026-05-05)
+
+### Bug Fixes
+
+* deploy azion preview ([831aa60](https://github.com/robsongajunior/azion-console-kit/commit/831aa6063da63d5c009b24b48e3b9e8b60ed16bd))
+
 ## [1.55.0-rc.1](https://github.com/robsongajunior/azion-console-kit/compare/1.54.0...1.55.0-rc.1) (2026-05-05)
 
 ### Features
