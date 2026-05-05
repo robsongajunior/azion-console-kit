@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.3](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.2...1.55.0-rc.3) (2026-05-05)
+
+### Bug Fixes
+
+* prev azion args ([bd88a62](https://github.com/robsongajunior/azion-console-kit/commit/bd88a629abe95c52e3f583dae367ce06d1897196))
+
 ## [1.55.0-rc.2](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.1...1.55.0-rc.2) (2026-05-05)
 
 ### Bug Fixes
