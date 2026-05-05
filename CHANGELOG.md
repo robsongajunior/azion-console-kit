@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.6](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.5...1.55.0-rc.6) (2026-05-05)
+
+### Bug Fixes
+
+* renaming preview to next azion folder ([35ae783](https://github.com/robsongajunior/azion-console-kit/commit/35ae78361be25688367bdba651089cffba860700))
+
 ## [1.55.0-rc.5](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.4...1.55.0-rc.5) (2026-05-05)
 
 ### Bug Fixes
