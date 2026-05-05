@@ -1,3 +1,4 @@
+/* eslint-env node */
 export default function versionInjectPlugin() {
   return {
     name: 'version-inject',
