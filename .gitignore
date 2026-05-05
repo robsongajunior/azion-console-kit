@@ -49,6 +49,7 @@ cypress.env.*
 !azion/stage
 !azion/prod
 !azion/stg
+!azion/preview
 azion
 /cypress/downloads
 
