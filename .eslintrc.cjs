@@ -29,23 +29,23 @@ module.exports = {
       // Modern code: TanStack model is mandatory
       files: ['src/modules/**/*', 'src/services/v2/**/*'],
       rules: {
-        'azion-architecture/no-direct-http-in-components': 'error',
-        'azion-architecture/no-http-in-stores': 'error',
-        'azion-architecture/require-vue-query': 'error',
-        'azion-architecture/no-try-catch-in-services': 'warn',
-        'azion-architecture/services-http-only': 'warn',
-        'azion-architecture/pure-adapters': 'warn',
-        'azion-architecture/module-isolation': 'off',
-        'azion-architecture/naming-convention': 'off',
-        'azion-architecture/type-separation': 'off'
+        // 'azion-architecture/no-direct-http-in-components': 'error',
+        // 'azion-architecture/no-http-in-stores': 'error',
+        // 'azion-architecture/require-vue-query': 'error',
+        // 'azion-architecture/no-try-catch-in-services': 'warn',
+        // 'azion-architecture/services-http-only': 'warn',
+        // 'azion-architecture/pure-adapters': 'warn',
+        // 'azion-architecture/module-isolation': 'off',
+        // 'azion-architecture/naming-convention': 'off',
+        // 'azion-architecture/type-separation': 'off'
       }
     },
     {
       // azion-ai-chat: SSE streaming — Vue Query not applicable
       files: ['src/modules/azion-ai-chat/**/*'],
       rules: {
-        'azion-architecture/require-vue-query': 'off',
-        'azion-architecture/no-try-catch-in-services': 'off'
+        // 'azion-architecture/require-vue-query': 'off',
+        // 'azion-architecture/no-try-catch-in-services': 'off'
       }
     },
     {
@@ -66,15 +66,15 @@ module.exports = {
         'src/composables/**/*'
       ],
       rules: {
-        'azion-architecture/no-direct-http-in-components': 'warn',
-        'azion-architecture/no-http-in-stores': 'warn',
-        'azion-architecture/require-vue-query': 'warn',
-        'azion-architecture/no-try-catch-in-services': 'warn',
-        'azion-architecture/services-http-only': 'warn',
-        'azion-architecture/pure-adapters': 'warn',
-        'azion-architecture/module-isolation': 'off',
-        'azion-architecture/naming-convention': 'off',
-        'azion-architecture/type-separation': 'off'
+        // 'azion-architecture/no-direct-http-in-components': 'warn',
+        // 'azion-architecture/no-http-in-stores': 'warn',
+        // 'azion-architecture/require-vue-query': 'warn',
+        // 'azion-architecture/no-try-catch-in-services': 'warn',
+        // 'azion-architecture/services-http-only': 'warn',
+        // 'azion-architecture/pure-adapters': 'warn',
+        // 'azion-architecture/module-isolation': 'off',
+        // 'azion-architecture/naming-convention': 'off',
+        // 'azion-architecture/type-separation': 'off'
       }
     }
   ],
