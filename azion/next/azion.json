@@ -10,7 +10,7 @@
     "id": 52430,
     "name": "__DEFAULT__",
     "file": ".edge/worker.js",
-    "args": "azion/preview/args.json",
+    "args": "azion/next/args.json",
     "instance-id": 46904,
     "instance-name": "__DEFAULT__",
     "cache-id": 0

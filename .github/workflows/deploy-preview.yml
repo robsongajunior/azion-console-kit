@@ -43,7 +43,7 @@ jobs:
         run: azion -t ${{ secrets.PLATFORM_KIT_TOKEN }}
 
       - name: Build & Deploy
-        run: azion deploy --auto --local --debug --config-dir azion/preview
+        run: azion deploy --auto --local --debug --config-dir azion/next
         env:
           NODE_ENV: production
           # GITHUB_SHA: ${{ github.sha }}
