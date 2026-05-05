@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.5](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.4...1.55.0-rc.5) (2026-05-05)
+
+### Bug Fixes
+
+* removing commit env var ([0159a86](https://github.com/robsongajunior/azion-console-kit/commit/0159a866bd21d64f180c4ece541de5c04b32e1c3))
+
 ## [1.55.0-rc.4](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.3...1.55.0-rc.4) (2026-05-05)
 
 ### Bug Fixes
