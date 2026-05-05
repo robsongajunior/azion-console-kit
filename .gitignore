@@ -42,15 +42,7 @@ package-lock.json
 cypress.env.*
 !cypress.env.example.json
 
-#azion vulcan folder
-#azion
 .edge
-!azion/production
-!azion/stage
-!azion/prod
-!azion/stg
-!azion/preview
-azion
 /cypress/downloads
 
 #Paths added by Azion CLI
