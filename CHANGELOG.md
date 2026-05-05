@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.4](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.3...1.55.0-rc.4) (2026-05-05)
+
+### Bug Fixes
+
+* disable prefix rotation, new prefix id ([dfe2db5](https://github.com/robsongajunior/azion-console-kit/commit/dfe2db523c14ebf866b7023190622a41f73cae96))
+
 ## [1.55.0-rc.3](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.2...1.55.0-rc.3) (2026-05-05)
 
 ### Bug Fixes
