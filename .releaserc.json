@@ -1,8 +1,7 @@
 {
+  "tagFormat": "${version}",
   "branches": [
-    {
-      "name": "main"
-    },
+    "main",
     {
       "name": "next",
       "channel": "next",
