@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.7](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.6...1.55.0-rc.7) (2026-05-06)
+
+### Bug Fixes
+
+* replace azion/preview to azion/next ([cd8239e](https://github.com/robsongajunior/azion-console-kit/commit/cd8239ee5d89958b42bbe0670a0dd64ecd517733))
+
 ## [1.55.0-rc.6](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.5...1.55.0-rc.6) (2026-05-05)
 
 ### Bug Fixes
