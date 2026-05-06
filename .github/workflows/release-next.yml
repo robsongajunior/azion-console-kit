@@ -18,6 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          ref: next
           fetch-depth: 0
           token: ${{ secrets.PAT_GITHUB }}
 
