@@ -46,7 +46,7 @@ jobs:
         run: azion deploy --auto --local --debug --config-dir azion/next
         env:
           NODE_ENV: production
-          # GITHUB_SHA: ${{ github.sha }}
+          GITHUB_SHA: ${{ github.sha }}
           VITE_ENVIRONMENT: production
           # VITE_STRIPE_TOKEN_STAGE: ${{ secrets.STAGE_STRIPE_TOKEN }}
           # VITE_RECAPTCHA_SITE_KEY: ${{ secrets.STAGE_RECAPTCHA_SITE_KEY }}
