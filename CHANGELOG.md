@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.11](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.10...1.55.0-rc.11) (2026-05-11)
+
+### Bug Fixes
+
+* Production Release name ([5e3fd18](https://github.com/robsongajunior/azion-console-kit/commit/5e3fd18d531fc73399006451e1d3a1e1f5efc306))
+
 ## [1.55.0-rc.10](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.9...1.55.0-rc.10) (2026-05-11)
 
 ### Bug Fixes
