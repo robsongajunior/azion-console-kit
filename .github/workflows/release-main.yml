@@ -1,6 +1,6 @@
 # This action is responsible for trigger deploy-production.yml
 
-name: Release Candidate
+name: Production Release
 
 on:
   push:
