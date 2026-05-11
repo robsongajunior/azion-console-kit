@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.55.0-rc.9](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.8...1.55.0-rc.9) (2026-05-07)
+
+### Bug Fixes
+
+* dir ltr ([abc00ce](https://github.com/robsongajunior/azion-console-kit/commit/abc00ce31b502436588ee5e29e70a3ba87e442cb))
+* html trigger build ([cab0af0](https://github.com/robsongajunior/azion-console-kit/commit/cab0af0756f0dd84df4cef14fa7b8f07177096dc))
+* release production adjust token and github cli ([a6c99fa](https://github.com/robsongajunior/azion-console-kit/commit/a6c99fa2045d5822dcbbbd3d5f2df79196260b98))
+
 ## [1.55.0-rc.8](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.7...1.55.0-rc.8) (2026-05-06)
 
 ### Bug Fixes
