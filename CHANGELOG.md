@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.0-rc.10](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.9...1.55.0-rc.10) (2026-05-11)
+
+### Bug Fixes
+
+* _ to disabled actions ([80195af](https://github.com/robsongajunior/azion-console-kit/commit/80195af7f3a89748dd668ca639f28bd1c9e0dfe4))
+
 ## [1.55.0-rc.9](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0-rc.8...1.55.0-rc.9) (2026-05-07)
 
 ### Bug Fixes
