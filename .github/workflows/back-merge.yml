@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_GITHUB }}
 
       - name: Configure Git
         run: |
@@ -32,12 +32,56 @@ jobs:
         if: steps.check.outputs.is_production == 'true'
         run: |
           git checkout next
-          git pull origin main --no-edit || true
+          git pull origin main --no-commit --no-ff || true
+
+          # Check if there are conflicts
+          if git diff --name-only --diff-filter=U | grep -q .; then
+            echo "Resolving conflicts in package.json and CHANGELOG.md..."
+
+            # For package.json and CHANGELOG.md, keep the next branch version
+            # This is safe because semantic-release will update these on next release
+            if git diff --name-only --diff-filter=U | grep -q "package.json"; then
+              git checkout --ours package.json
+              git add package.json
+            fi
+
+            if git diff --name-only --diff-filter=U | grep -q "CHANGELOG.md"; then
+              git checkout --ours CHANGELOG.md
+              git add CHANGELOG.md
+            fi
+
+            # Commit the merge with resolved conflicts
+            git commit -m "chore: back-merge main → next (resolved conflicts)" --no-verify
+          else
+            # No conflicts, complete the merge
+            git commit -m "chore: back-merge main → next" --no-verify || true
+          fi
+
           git push origin next
 
       - name: Back-merge next → dev
         if: steps.check.outputs.is_production == 'true'
         run: |
           git checkout dev
-          git pull origin next --no-edit || true
+          git pull origin next --no-commit --no-ff || true
+
+          # Check if there are conflicts
+          if git diff --name-only --diff-filter=U | grep -q .; then
+            echo "Resolving conflicts in package.json and CHANGELOG.md..."
+
+            if git diff --name-only --diff-filter=U | grep -q "package.json"; then
+              git checkout --ours package.json
+              git add package.json
+            fi
+
+            if git diff --name-only --diff-filter=U | grep -q "CHANGELOG.md"; then
+              git checkout --ours CHANGELOG.md
+              git add CHANGELOG.md
+            fi
+
+            git commit -m "chore: back-merge next → dev (resolved conflicts)" --no-verify
+          else
+            git commit -m "chore: back-merge next → dev" --no-verify || true
+          fi
+
           git push origin dev
