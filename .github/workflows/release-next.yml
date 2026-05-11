@@ -1,3 +1,5 @@
+# This action is responsible for trigger deploy-preview.yml
+
 name: Release Candidate
 
 on:

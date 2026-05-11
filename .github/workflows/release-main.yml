@@ -1,4 +1,6 @@
-name: Production Release
+# This action is responsible for trigger deploy-production.yml
+
+name: Release Candidate
 
 on:
   push:
@@ -20,7 +22,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_GITHUB }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Release 
+      - name: Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
