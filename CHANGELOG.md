@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.55.1](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0...1.55.1) (2026-05-15)
+
+### Bug Fixes
+
+* generate new PATH ([43fa4b0](https://github.com/robsongajunior/azion-console-kit/commit/43fa4b0d7bf9a387765066ee9f9dc25349e5081e))
+* remove next branch pipeline ([1f7bd75](https://github.com/robsongajunior/azion-console-kit/commit/1f7bd75e852ba6946ac1663edb5b4bf10a05adeb))
+
 ## [1.55.0](https://github.com/robsongajunior/azion-console-kit/compare/1.54.0...1.55.0) (2026-05-12)
 
 ### Features
