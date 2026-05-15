@@ -1,12 +1,10 @@
 name: Deploy Preview
 
 on:
-  workflow_run:
-    workflows: ["Release Candidate"]
-    types:
-      - completed
+  pull_request:
+    types: [opened, synchronize, reopened]
     branches:
-      - next
+      - main
 
 env:
   HUSKY: 0
@@ -15,10 +13,9 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     concurrency:
-      group: deploy-console
-      cancel-in-progress: false
+      group: deploy-preview-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     container:
       image: node:22-alpine
 
@@ -26,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: next
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Install SO deps
@@ -47,7 +44,7 @@ jobs:
         run: azion deploy --auto --local --debug --config-dir azion/preview
         env:
           NODE_ENV: production
-          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha }}
           VITE_ENVIRONMENT: production
           # VITE_STRIPE_TOKEN_STAGE: ${{ secrets.STAGE_STRIPE_TOKEN }}
           # VITE_RECAPTCHA_SITE_KEY: ${{ secrets.STAGE_RECAPTCHA_SITE_KEY }}

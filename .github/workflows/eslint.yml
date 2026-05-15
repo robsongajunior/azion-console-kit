@@ -3,9 +3,7 @@ on:
   pull_request:
     types: [opened, synchronize]
   push:
-    branches:
-      - dev
-      - UXE-6333-real-time-event-improvement-fork
+    branches: [dev, main]
 env:
   HUSKY: 0
 jobs:

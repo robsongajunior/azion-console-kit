@@ -2,7 +2,7 @@ name: Back-merge after release
 
 on:
   push:
-    tags: ["v*.*.*"]
+    tags: ["*.*.*"]
 
 jobs:
   back-merge:
@@ -18,70 +18,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Check if production release
-        id: check
+      - name: Back-merge main → dev
         run: |
-          TAG="${{ github.ref_name }}"
-          if [[ ! "$TAG" =~ -rc ]]; then
-            echo "is_production=true" >> $GITHUB_OUTPUT
-          else
-            echo "is_production=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Back-merge main → next
-        if: steps.check.outputs.is_production == 'true'
-        run: |
-          git checkout next
-          git pull origin main --no-commit --no-ff || true
-
-          # Check if there are conflicts
-          if git diff --name-only --diff-filter=U | grep -q .; then
-            echo "Resolving conflicts in package.json and CHANGELOG.md..."
-
-            # For package.json and CHANGELOG.md, keep the next branch version
-            # This is safe because semantic-release will update these on next release
-            if git diff --name-only --diff-filter=U | grep -q "package.json"; then
-              git checkout --ours package.json
-              git add package.json
-            fi
-
-            if git diff --name-only --diff-filter=U | grep -q "CHANGELOG.md"; then
-              git checkout --ours CHANGELOG.md
-              git add CHANGELOG.md
-            fi
-
-            # Commit the merge with resolved conflicts
-            git commit -m "chore: back-merge main → next (resolved conflicts)" --no-verify
-          else
-            # No conflicts, complete the merge
-            git commit -m "chore: back-merge main → next" --no-verify || true
-          fi
-
-          git push origin next
-
-      - name: Back-merge next → dev
-        if: steps.check.outputs.is_production == 'true'
-        run: |
+          git fetch origin
           git checkout dev
-          git pull origin next --no-commit --no-ff || true
-
-          # Check if there are conflicts
-          if git diff --name-only --diff-filter=U | grep -q .; then
-            echo "Resolving conflicts in package.json and CHANGELOG.md..."
-
-            if git diff --name-only --diff-filter=U | grep -q "package.json"; then
-              git checkout --ours package.json
-              git add package.json
-            fi
-
-            if git diff --name-only --diff-filter=U | grep -q "CHANGELOG.md"; then
-              git checkout --ours CHANGELOG.md
-              git add CHANGELOG.md
-            fi
-
-            git commit -m "chore: back-merge next → dev (resolved conflicts)" --no-verify
-          else
-            git commit -m "chore: back-merge next → dev" --no-verify || true
-          fi
-
+          git merge origin/main --no-edit -m "chore: back-merge main → dev [skip ci]"
           git push origin dev
