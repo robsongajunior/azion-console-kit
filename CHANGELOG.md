@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.55.2](https://github.com/robsongajunior/azion-console-kit/compare/1.55.1...1.55.2) (2026-05-17)
+
+### Bug Fixes
+
+* rollback pipeline set alpine image ([464d53e](https://github.com/robsongajunior/azion-console-kit/commit/464d53e23785bc03aa272d8dfb4c4fab6c040e2a))
+
 ## [1.55.1](https://github.com/robsongajunior/azion-console-kit/compare/1.55.0...1.55.1) (2026-05-15)
 
 ### Bug Fixes
