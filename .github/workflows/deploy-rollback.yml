@@ -11,6 +11,9 @@ on:
 permissions:
   contents: read
 
+env:
+  CLI_VERSION: 4.15.0
+
 jobs:
   rollback:
     runs-on: ubuntu-latest
@@ -22,6 +25,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      
+      - name: Install SO deps
+        run: apk add curl git bash jq
 
       - name: Find last stable release
         id: last_release
@@ -39,20 +45,19 @@ jobs:
       - name: Checkout last stable version
         run: git checkout ${{ steps.last_release.outputs.last_stable }}
 
-      - name: Install SO deps
-        run: apk add curl git bash jq
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Download Azion CLI
         run: |
-          wget https://github.com/aziontech/azion/releases/download/4.15.0/azion_4.15.0_linux_amd64.apk
-          apk add --allow-untrusted azion_4.15.0_linux_amd64.apk
+          wget https://github.com/aziontech/azion/releases/download/${CLI_VERSION}/azion_${CLI_VERSION}_linux_amd64.apk
+          apk add --allow-untrusted azion_${CLI_VERSION}_linux_amd64.apk
 
-      - name: Deploy to production
+      - name: Configure Azion CLI
+        run: azion -t ${{ secrets.PLATFORM_KIT_TOKEN }}
+
+      - name: Build & Deploy to Production
         run: |
-          azion -t ${{ secrets.PLATFORM_KIT_TOKEN }}
           azion deploy --auto --local --debug --config-dir azion/production
         env:
           VITE_ENVIRONMENT: production

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       target_version:
-        description: 'Target version (e.g. v1.57.0, v1.58.0, v1.58.1, v1.58.2)'
+        description: 'Target version (e.g. 1.57.0, 1.58.0, 1.58.1, 1.58.2)'
         required: true
         type: string
       confirm:
@@ -14,6 +14,9 @@ on:
 
 permissions:
   contents: read
+
+env:
+  CLI_VERSION: 4.15.0
 
 jobs:
   rollback:
@@ -27,6 +30,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          
+      - name: Install SO deps
+        run: apk add curl git bash jq
 
       - name: Validate target version
         run: |
@@ -44,20 +50,19 @@ jobs:
       - name: Checkout target version
         run: git checkout ${{ github.event.inputs.target_version }}
 
-      - name: Install SO deps
-        run: apk add curl git bash jq
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Download Azion CLI
         run: |
-          wget https://github.com/aziontech/azion/releases/download/4.15.0/azion_4.15.0_linux_amd64.apk
-          apk add --allow-untrusted azion_4.15.0_linux_amd64.apk
-
-      - name: Deploy to production
+          wget https://github.com/aziontech/azion/releases/download/${CLI_VERSION}/azion_${CLI_VERSION}_linux_amd64.apk
+          apk add --allow-untrusted azion_${CLI_VERSION}_linux_amd64.apk
+      
+      - name: Configure Azion CLI
+        run: azion -t ${{ secrets.PLATFORM_KIT_TOKEN }}
+        
+      - name: Build & Deploy to Production
         run: |
-          azion -t ${{ secrets.PLATFORM_KIT_TOKEN }}
           azion deploy --auto --local --debug --config-dir azion/production
         env:
           VITE_ENVIRONMENT: production
