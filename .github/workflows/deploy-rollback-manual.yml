@@ -1,8 +1,12 @@
-name: Quick Rollback
+name: Rollback Manual to Version
 
 on:
   workflow_dispatch:
     inputs:
+      target_version:
+        description: 'Target version (e.g. v1.57.0, v1.58.0, v1.58.1, v1.58.2)'
+        required: true
+        type: string
       confirm:
         description: 'Type "ROLLBACK" to confirm'
         required: true
@@ -15,6 +19,8 @@ jobs:
   rollback:
     runs-on: ubuntu-latest
     if: github.event.inputs.confirm == 'ROLLBACK'
+    container:
+      image: node:22-alpine
 
     steps:
       - name: Checkout code
@@ -22,21 +28,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find last stable release
-        id: last_release
+      - name: Validate target version
         run: |
-          LAST_STABLE=$(git tag -l 'v*' | grep -v '\-rc' | sort -V | tail -2 | head -1)
+          TARGET="${{ github.event.inputs.target_version }}"
 
-          if [ -z "$LAST_STABLE" ]; then
-            echo "Error: No previous stable release found"
+          if ! git tag | grep -q "^${TARGET}$"; then
+            echo "Error: Version ${TARGET} not found"
+            echo "Available tags:"
+            git tag -l 'v*' | tail -10
             exit 1
           fi
 
-          echo "last_stable=$LAST_STABLE" >> $GITHUB_OUTPUT
-          echo "::notice::Rolling back to $LAST_STABLE"
+          echo "::notice::Target version ${TARGET} found"
 
-      - name: Checkout last stable version
-        run: git checkout ${{ steps.last_release.outputs.last_stable }}
+      - name: Checkout target version
+        run: git checkout ${{ github.event.inputs.target_version }}
 
       - name: Install SO deps
         run: apk add curl git bash jq
@@ -55,7 +61,7 @@ jobs:
           azion deploy --auto --local --debug --config-dir azion/production
         env:
           VITE_ENVIRONMENT: production
-          GITHUB_SHA: ${{ steps.last_release.outputs.last_stable }}
+          GITHUB_SHA: ${{ github.event.inputs.target_version }}
 
       - name: Create rollback record
         uses: actions/github-script@v7
@@ -64,9 +70,9 @@ jobs:
             await github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag_name: '${{ steps.last_release.outputs.last_stable }}-rollback-' + Date.now(),
-              name: 'Rollback to ${{ steps.last_release.outputs.last_stable }}',
-              body: 'Automated rollback to previous stable release',
+              tag_name: '${{ github.event.inputs.target_version }}-manual-rollback-' + Date.now(),
+              name: 'Manual Rollback to ${{ github.event.inputs.target_version }}',
+              body: 'Manual rollback deployed via workflow_dispatch',
               draft: false,
               prerelease: false
             });

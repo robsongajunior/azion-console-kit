@@ -1,4 +1,4 @@
-name: Deploy Preview
+name: Deploy Console Kit (Preview)
 
 on:
   pull_request:
